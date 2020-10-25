@@ -5,6 +5,11 @@
 __pycache__
 db.sqlite3
 media
+soad_windows_env
+soad_env
+windows_req.txt
+.vscode/
+collabinn/*/migrations
 
 # Backup files # 
 *.bak 
