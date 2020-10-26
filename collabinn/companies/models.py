@@ -31,13 +31,13 @@ class UserManager(BaseUserManager):
 
 class Company(AbstractBaseUser):
     
-    email = models.EmailField(verbose_name='email',max_length=255,unique=True)
+    email = models.EmailField(verbose_name='email',max_length=100,unique=True)
     company_name = models.CharField(max_length=30)
     location = models.CharField(max_length=30)
     company_uid = models.CharField(max_length=30, unique=True)
     date_of_est = models.DateField(max_length=8,null=True)
-    expertise=models.TextField(verbose_name='expertise',max_length=255,null=True)
-    interests=models.TextField(max_length=255,verbose_name='interests',null=True)
+    expertise=models.TextField(verbose_name='expertise',max_length=100,null=True)
+    interests=models.TextField(max_length=100,verbose_name='interests',null=True)
     
 
     is_admin = models.BooleanField(default=False)

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'meetings',
     'companies',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

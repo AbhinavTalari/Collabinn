@@ -10,6 +10,7 @@ soad_env
 windows_req.txt
 .vscode/
 collabinn/*/migrations
+frontend
 
 # Backup files # 
 *.bak 
