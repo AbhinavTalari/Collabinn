@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from .forms import RegistrationForm,AccountAuthenticationForm
+from .models import Company
 
 
 
@@ -22,3 +23,11 @@ def register_view(request):
         form = RegistrationForm()
         context['form'] = form
         return render(request, 'companies/register.html', context)
+    
+def list_companies_view(request):
+    context={}
+    companies=Company.objects.all()
+    context['companies']=companies
+    
+    return render(request,'companies/companylist.html',context)
+    

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SOAD_Project</title>
+    <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css"%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Inline">
+    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css"%}">
+    <link rel="stylesheet" href="{% static "assets/fonts/ionicons.min.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Footer-Dark.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Navigation-with-Search.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Projects-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Registration-Form-with-Photo.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/styles.css"%}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+        <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Success Stories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Companies</a></li>
+                </ul>
+                <form class="form-inline mr-auto" target="_self">
+                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
+                </form>
+        </div>
+        </div>
+    </nav>
+
+        {% for company in companies %}
+        
+        <div style="background-color:black; margin-top:50px;color:white;padding:40px">
+        <p>
+        Company Name : {{company.company_name}}
+        </br>
+        Company Location : {{company.location}}
+        </br>
+         Company Date of Establishment  : {{company.date_of_est}}
+        </br>
+         Company Area of Expertise  : {{company.expertise}}
+        </br>
+         Company Interests : {{company.interests}}
+         
+        </br>
+        
+
+        </p>
+        </div>
+
+         {% endfor %}
+        
+    
+   
+    <script src="{% static "assets/js/jquery.min.js"%}"></script>
+    <script src="{% static "assets/bootstrap/js/bootstrap.min.js"%}"></script>
+</body>
+
+</html>
