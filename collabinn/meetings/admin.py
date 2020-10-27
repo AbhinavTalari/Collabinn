@@ -1,3 +1,4 @@
 from django.contrib import admin
+from meetings.models import MeetingInfo
 
-# Register your models here.
+admin.site.register(MeetingInfo)
