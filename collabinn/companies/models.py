@@ -65,4 +65,13 @@ class Company(AbstractBaseUser):
         return True
 
 
+class CollabRequest(models.Model):
+    to_user=models.ForeignKey(Company,related_name='to_company',on_delete=models.CASCADE)
+    from_user=models.ForeignKey(Company,related_name='from_company',on_delete=models.CASCADE)
+    timestamp=models.DateTimeField(auto_now_add=True)
+    
+    def __str__ (self):
+        return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)
+    
+
 
