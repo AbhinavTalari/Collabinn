@@ -1,3 +1,4 @@
 from django.contrib import admin
+from venues.models import VenueInfo
 
-# Register your models here.
+admin.site.register(VenueInfo)
