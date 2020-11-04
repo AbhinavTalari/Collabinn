@@ -1,4 +1,4 @@
-from .models import Company,CollabRequest
+from .models import Company,CollabRequest,Company_Profile
 from django.contrib import admin
 # Register your models here.
 
@@ -16,4 +16,8 @@ class CompanyAdmin(admin.ModelAdmin):
     inlines = [RelationshipInline]
 
 admin.site.register(Company, CompanyAdmin)
+admin.site.register(Company_Profile)
+
+
+
 

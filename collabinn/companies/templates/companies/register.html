@@ -36,12 +36,12 @@
     <div class="register-photo">
         <div class="form-container">
            
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <table>{{ form.as_table }}</table>
-                
-                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background: rgb(11,220,157);">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a></form>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background: rgb(11,220,157);">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a>
+            </form>
         </div>
     </div>
     <script src="{% static "assets/js/jquery.min.js"%}"></script>

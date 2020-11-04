@@ -40,6 +40,7 @@ class Company(AbstractBaseUser):
     interests=models.TextField(max_length=100,verbose_name='interests',null=True)
     colabs_partners=models.ManyToManyField('self',through='CollabRequest',symmetrical=False,related_name='related_to+')
     
+    
 
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -56,7 +57,7 @@ class Company(AbstractBaseUser):
     objects = UserManager()
 
     def __str__(self):              
-        return self.email
+        return self.company_uid
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific  object wise permission?"
@@ -91,11 +92,13 @@ class Company(AbstractBaseUser):
         to_people__status=status,
         to_people__from_person=self)
     
-RELATIONSHIP_FOLLOWING = 1
+RELATIONSHIP_REQUESTED = 1
 RELATIONSHIP_BLOCKED = 2
+RELATIONSHIP_ACCEPTED =3
 RELATIONSHIP_STATUSES = (
-(RELATIONSHIP_FOLLOWING, 'Following'),
+(RELATIONSHIP_REQUESTED, 'Requested'),
 (RELATIONSHIP_BLOCKED, 'Blocked'),
+(RELATIONSHIP_ACCEPTED,'Accepted')
 )  
 
 
@@ -108,6 +111,11 @@ class CollabRequest(models.Model):
     
     def __str__ (self):
         return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)
+    
+    
+class Company_Profile(models.Model):
+    user=models.OneToOneField(Company, verbose_name=("Company Profile"), on_delete=models.CASCADE)
+    company_logo=models.ImageField(upload_to='profile_logos', height_field=None, width_field=None, max_length=None,blank=True, null=True)
     
 
 
