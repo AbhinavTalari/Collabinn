@@ -7,7 +7,7 @@ class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100, help_text='Enter Valid Email ! Required Field')
     class Meta:
         model = Company
-        fields = ('company_name','location','email', 'company_uid','date_of_est','expertise','interests', 'password1', 'password2',)
+        fields = ('company_name','location','email', 'company_uid','date_of_est','expertise','interests','password1', 'password2',)
 
 class AccountAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
