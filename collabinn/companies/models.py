@@ -80,8 +80,9 @@ class Company(AbstractBaseUser):
         status=status)
         if symm:
             person.add_relationship(self, status, False)
-        person.save()
-        self.save()    
+        # person.save()
+        # self.save()    
+        relationship.save()
         return relationship
 
     def remove_relationship(self, person, status, symm=True):
@@ -94,9 +95,11 @@ class Company(AbstractBaseUser):
             person.remove_relationship(self, status, False)
             
     def get_relationships(self, status):
-        return self.relationships.filter(
-        from_company__status=status,
-        to_company__from_person=self)
+        # return self.relationships.filter(
+        # from_company__status=status,
+        # to_company__from_person=self)
+        return CollabRequest.objects.filter(to_user=self, status=status) or \
+                CollabRequest.objects.filter(from_user=self, status=status)
         
         
         
@@ -120,9 +123,10 @@ class CollabRequest(models.Model):
     status = models.IntegerField(choices=RELATIONSHIP_STATUSES,null=True)
     
     def __str__ (self):
-        return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)
+        # return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)
+        return "Collab Request From {},to {}".format(self.from_user.company_name,self.to_user.company_name)
     
-      
+
 class Company_Profile(models.Model):
     user=models.OneToOneField(Company, verbose_name=("Company Profile"), on_delete=models.CASCADE)
     company_logo=models.ImageField(upload_to='profile_logos', height_field=None, width_field=None, max_length=None,blank=True, null=True)
