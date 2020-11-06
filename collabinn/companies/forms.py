@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Company
 from django.contrib.auth import authenticate, login
 
+
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100, help_text='Enter Valid Email ! Required Field')
     class Meta:
@@ -20,3 +21,11 @@ class AccountAuthenticationForm(forms.ModelForm):
                 password = self.cleaned_data['password']
                 if not authenticate(email=email, password=password):
                     raise forms.ValidationError("Invalid login")
+                
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model=Company
+        fields = ('company_name','location','email', 'company_uid','date_of_est','expertise','interests')
+    

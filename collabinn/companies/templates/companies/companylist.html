@@ -37,26 +37,24 @@
         <h2><strong>Hello</strong> {{user.company_name}}</h2>
 
         {% for company in companies %}
-        {% comment %} {% if company.company_name != user.company_name %} {% endcomment %}
+        {% if company.company_name != user.company_name %}
         
-        <div style="background-color:black; margin-top:50px;color:white;padding:40px">
-        <p>
-        Company Name : {{company.company_name}}
-        </br>
-        Company Location : {{company.location}}
-        </br>
-         Company Date of Establishment  : {{company.date_of_est}}
-        </br>
-         Company Area of Expertise  : {{company.expertise}}
-        </br>
-         Company Interests : {{company.interests}}
-         
-        </br>
         
 
-        </p>
+
+         <div class="card">
+        <div class="card-body" style="box-shadow: 0px 0px, 7px 3px 7px;margin-top: 20px;border-width: 1px;border-style: solid;border-radius: 10px;">
+            <h4 class="card-title">{{company.company_name}}</h4>
+            <h6 class="text-muted card-subtitle mb-2">Expertise :{{company.expertise}}</h6>
+            <h6 class="text-muted card-subtitle mb-2">Interests :{{company.interests}}</h6>
+            
+            <h6 class="text-muted card-subtitle mb-2">Location :{{company.location}} </h6><button class="btn btn-primary" type="button" style="margin-right: 10px;border-radius: 30px;">Send Colab Request</button></div>
         </div>
-        {% comment %} {% endif %} {% endcomment %}
+        </div
+        
+
+        
+        {% endif %}
         
 
          {% endfor %}

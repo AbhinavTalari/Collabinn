@@ -5,29 +5,31 @@ from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, company_uid, password=None):
         if not email:
             raise ValueError('Email address is a must')
-        if not username:
+        if not company_uid:
             raise ValueError('User Name is a must')
         user = self.model(
             email=self.normalize_email(email),
-            username=username,
+            company_uid=company_uid,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user	
-    def create_superuser(self, email, username, password):
+    def create_superuser(self, email, company_uid, password):
         user = self.create_user(
         	email=self.normalize_email(email),
         	password=password,
-        	username=username,
+        	company_uid=company_uid,
         )
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
         return user
+    
+    
 
 class Company(AbstractBaseUser):
     
@@ -38,7 +40,7 @@ class Company(AbstractBaseUser):
     date_of_est = models.DateField(max_length=8,null=True)
     expertise=models.TextField(verbose_name='expertise',max_length=100,null=True)
     interests=models.TextField(max_length=100,verbose_name='interests',null=True)
-    colabs_partners=models.ManyToManyField('self',through='CollabRequest',symmetrical=False,related_name='related_to+')
+    relationships = models.ManyToManyField('self', through='CollabRequest',symmetrical=False,related_name='related_to+')
     
     
 
@@ -68,14 +70,18 @@ class Company(AbstractBaseUser):
         "Does the user have permissions to access app with appname `app_label`?"
       
         return True
+    
+    
+        
     def add_relationship(self, person, status, symm=True):
         relationship, created = CollabRequest.objects.get_or_create(
-        from_person=self,
-        to_person=person,
+        from_user=self,
+        to_user=person,
         status=status)
         if symm:
-        # avoid recursion by passing `symm=False`
             person.add_relationship(self, status, False)
+        person.save()
+        self.save()    
         return relationship
 
     def remove_relationship(self, person, status, symm=True):
@@ -88,9 +94,13 @@ class Company(AbstractBaseUser):
             person.remove_relationship(self, status, False)
             
     def get_relationships(self, status):
-        return self.colabs_partners.filter(
-        to_people__status=status,
-        to_people__from_person=self)
+        return self.relationships.filter(
+        from_company__status=status,
+        to_company__from_person=self)
+        
+        
+        
+    
     
 RELATIONSHIP_REQUESTED = 1
 RELATIONSHIP_BLOCKED = 2
@@ -112,7 +122,7 @@ class CollabRequest(models.Model):
     def __str__ (self):
         return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)
     
-    
+      
 class Company_Profile(models.Model):
     user=models.OneToOneField(Company, verbose_name=("Company Profile"), on_delete=models.CASCADE)
     company_logo=models.ImageField(upload_to='profile_logos', height_field=None, width_field=None, max_length=None,blank=True, null=True)
