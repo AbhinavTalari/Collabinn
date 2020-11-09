@@ -19,8 +19,10 @@ from django.contrib.auth import views as auth_views
 from companies import views
 
 urlpatterns = [
-    path('',views.renderhome),
+    path('',views.renderhome,name='home'),
      path('login', auth_views.LoginView.as_view(template_name='companies/login.html'),name='login'),
+     path('logout',views.logout_view,name='logout'),
      path('register',views.register_view,name='register'),
      path('companylist',views.list_companies_view,name='companylist'),
+     path('profile',views.render_profile,name='profile')
 ]
