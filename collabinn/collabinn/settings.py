@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_webtest',
     'meetings',
     'companies',
     'crispy_forms',
     'venues',
-    'flights'
 ]
 
 MIDDLEWARE = [
@@ -125,13 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS=[
-]
-
-STATIC_ROOT=os.path.join(BASE_DIR,'assets')
-
-
 CRISPY_TEMPLATE_PACK='bootstrap4'
 MEDIA_ROOT=os.path.join(BASE_DIR,'profile_logos')
 MEDIA_URL=''
@@ -139,5 +132,3 @@ MEDIA_URL=''
 AUTH_USER_MODEL = 'companies.Company'
 
 LOGIN_REDIRECT_URL='companylist'
-
-LOGOUT_REDIRECT_URL='home'
