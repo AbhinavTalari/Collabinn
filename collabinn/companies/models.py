@@ -5,31 +5,30 @@ from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, company_uid, password=None):
+
+    def create_user(self, email, username, password=None):
         if not email:
             raise ValueError('Email address is a must')
-        if not company_uid:
+        if not username:
             raise ValueError('User Name is a must')
         user = self.model(
             email=self.normalize_email(email),
-            company_uid=company_uid,
+            username=username,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user	
-    def create_superuser(self, email, company_uid, password):
+    def create_superuser(self, email, username, password):
         user = self.create_user(
         	email=self.normalize_email(email),
         	password=password,
-        	company_uid=company_uid,
+        	username=username,
         )
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
         return user
-    
-    
 
 class Company(AbstractBaseUser):
     
@@ -40,7 +39,7 @@ class Company(AbstractBaseUser):
     date_of_est = models.DateField(max_length=8,null=True)
     expertise=models.TextField(verbose_name='expertise',max_length=100,null=True)
     interests=models.TextField(max_length=100,verbose_name='interests',null=True)
-    relationships = models.ManyToManyField('self', through='CollabRequest',symmetrical=False,related_name='related_to+')
+    colabs_partners=models.ManyToManyField('self',through='CollabRequest',symmetrical=False,related_name='related_to+')
     
     
 
@@ -70,40 +69,44 @@ class Company(AbstractBaseUser):
         "Does the user have permissions to access app with appname `app_label`?"
       
         return True
-    
-    
-        
+
+
     def add_relationship(self, person, status, symm=True):
         relationship, created = CollabRequest.objects.get_or_create(
-        from_user=self,
+        from_user= self,
         to_user=person,
         status=status)
+        '''
+        relationship, created = CollabRequest.objects.get_or_create(
+        from_person=self,
+        to_person=person,
+        status=status)
+        '''
         if symm:
+        # avoid recursion by passing `symm=False`
             person.add_relationship(self, status, False)
-        # person.save()
-        # self.save()    
-        relationship.save()
         return relationship
 
     def remove_relationship(self, person, status, symm=True):
+        '''
         CollabRequest.objects.filter(
         from_person=self,
         to_person=person,
         status=status).delete()
+        '''
+        CollabRequest.objects.filter(
+        from_user=self,
+        to_user =person,
+        status=status).delete()
+
         if symm:
         # avoid recursion by passing `symm=False`
             person.remove_relationship(self, status, False)
             
     def get_relationships(self, status):
-        # return self.relationships.filter(
-        # from_company__status=status,
-        # to_company__from_person=self)
-        return CollabRequest.objects.filter(to_user=self, status=status) or \
-                CollabRequest.objects.filter(from_user=self, status=status)
-        
-        
-        
-    
+        return self.colabs_partners.filter(
+        to_people__status=status,
+        to_people__from_person=self)
     
 RELATIONSHIP_REQUESTED = 1
 RELATIONSHIP_BLOCKED = 2
@@ -123,10 +126,9 @@ class CollabRequest(models.Model):
     status = models.IntegerField(choices=RELATIONSHIP_STATUSES,null=True)
     
     def __str__ (self):
-        # return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)
-        return "Collab Request From {},to {}".format(self.from_user.company_name,self.to_user.company_name)
+        return "Collab Request From {},to {}".format(self.from_user.company_name,self.to_user.company_name) ##NOTE:CHANGED*****
     
-
+    
 class Company_Profile(models.Model):
     user=models.OneToOneField(Company, verbose_name=("Company Profile"), on_delete=models.CASCADE)
     company_logo=models.ImageField(upload_to='profile_logos', height_field=None, width_field=None, max_length=None,blank=True, null=True)
