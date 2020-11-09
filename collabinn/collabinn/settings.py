@@ -131,3 +131,5 @@ MEDIA_URL=''
 AUTH_USER_MODEL = 'companies.Company'
 
 LOGIN_REDIRECT_URL='companylist'
+
+LOGOUT_REDIRECT_URL='home'

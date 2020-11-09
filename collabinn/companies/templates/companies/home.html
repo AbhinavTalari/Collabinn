@@ -10,27 +10,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Inline">
     <link rel="stylesheet" href="{%static "assets/fonts/font-awesome.min.css"%}">
     <link rel="stylesheet" href="{%static "assets/fonts/ionicons.min.css"%}">
+    <link rel="stylesheet" href="{%static "assets/css/Features-Boxed.css"%}">
     <link rel="stylesheet" href="{%static "assets/css/Footer-Dark.css"%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
     <link rel="stylesheet" href="{%static "assets/css/Navigation-with-Search.css"%}">
+    <link rel="stylesheet" href="{%static "assets/css/Particle-JS---Background-Fixed-1.css"%}">
+    <link rel="stylesheet" href="{%static "assets/css/Particle-JS---Background-Fixed.css"%}">
     <link rel="stylesheet" href="{%static "assets/css/Projects-Clean.css"%}">
     <link rel="stylesheet" href="{%static "assets/css/Registration-Form-with-Photo.css"%}">
     <link rel="stylesheet" href="{%static "assets/css/styles.css"%}">
+    <link rel="stylesheet" href="{%static "assets/css/Team-Boxed.css"%}">
 </head>
 
-<body style="background: url({%static "assets/img/backgroundhome.png"%}) no-repeat, rgb(255,255,255);background-size: contain, auto;margin-left: auto;margin-right: auto;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+<body style="background: url({%static "assets/img/iceberg_800x600.jpg"%}) center / cover no-repeat, rgb(255,255,255);margin-left: auto;margin-right: auto;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(0,0,0);color: rgb(255,255,255);">
         <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Success Stories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="companylist">Companies</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">Success Stories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="companylist" style="color: rgb(255,255,255);">Companies</a></li>
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
-                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
+                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="background: #ffffff;border-radius: 31px;border-width: 1px;width: 349px;margin: 0px;margin-right: 0px;margin-left: 15px;"></div>
                 </form><a class="btn btn-light action-button" role="button" href="register" style="background: rgb(0,178,255);margin-right: 5px;">Register</a><a class="btn btn-light action-button" role="button" href="login" style="background: rgb(0,178,255);">Login</a></div>
         </div>
     </nav>
@@ -38,143 +42,88 @@
         <h1 class="bounce animated" style="text-align: center;padding-top: 100px;color: rgb(0,0,0);font-family: 'Bungee Inline', cursive;">Welcome to Collabinn</h1>
     </div>
     <h1 style="text-align: center;"><img data-aos="zoom-in" data-aos-duration="1050" src="{%static "assets/img/d2d3d8cc-1ad0-45f2-91d9-1b7adbde1ac6_200x200.png"%}" style="background: #ffffff;border-radius: 108px;border-top-left-radius: none;border-bottom-right-radius: none;"></h1>
-    <div class="card" style="padding: 0px;height: 222px;max-width: auto;margin: 20px;width: 1200px;margin-left: auto;margin-right: auto;">
-        <div class="card-body" data-aos="fade-up" style="margin: 2px;text-align: center;padding: 19px;height: 204px;">
-            <h4 class="card-title">About Us</h4>
-            <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-        </div>
+    <div class="card" style="margin-top: 0px;margin-bottom: 19px;border-width: 1px;border-radius: 80px;">
+        <div class="card-body" style="margin-top: 0px;margin-bottom: 0px;text-align: center;">
+            <h4 class="card-title">What we do ?</h4>
+            <p class="card-text" style="padding: 0px;margin-right: 19px;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button" style="background: rgb(56,146,242);border-radius: 30px;">Success Stories</button></div>
     </div>
-    <div class="projects-clean" style="opacity: 1;background: rgba(0,0,0,0);">
-        <div class="container" style="filter: blur(0px);">
-            <div class="intro">
-                <h2 class="text-center" data-aos="fade" data-aos-duration="950" style="font-weight: 500;color: rgb(0,0,0);">What we Do&nbsp;</h2>
-                <p class="text-center" data-aos="fade-up" style="color: #222222;font-size: 19px;">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-            </div>
-            <div class="row projects">
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-right" data-aos-duration="900" style="background: #ffffff;"><img class="img-fluid" src="{%static "assets/img/desk.jpg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade" data-aos-duration="900" style="background: #fffcfc;"><img class="img-fluid" src="{%static "assets/img/building.jpg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-left" data-aos-duration="900" style="background: #ffffff;"><img class="img-fluid" src="{%static "assets/img/loft.jpg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-right" data-aos-duration="900" style="background: #ffffff;"><img class="img-fluid" src="{%static "assets/img/minibus.jpeg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade" data-aos-duration="900" style="background: #ffffff;"><img class="img-fluid" src="{%static "assets/img/minibus.jpeg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-left" data-aos-duration="900" style="background: #ffffff;"><img class="img-fluid" src="{%static "assets/img/minibus.jpeg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-dark">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="#">Web design</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Hosting</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Careers</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 item text">
-                        <h3>Company Name</h3>
-                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-                    </div>
-                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
-                </div>
-                <p class="copyright">Company Name © 2017</p>
-            </div>
-        </footer>
-    </div>
-    <div></div>
-    <script src="{%static "assets/js/jquery.min.js"%}"></script>
-    <script src="{%static "assets/bootstrap/js/bootstrap.min.js"%}"></script>
-    <script src="{%static "assets/js/bs-init.js"%}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
-</body>
-
-</html>
-</head>
-
-<body style="background: rgb(255,255,255); background-image:url('{%static "assets/img/backgroundhome.png" %}')">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
-        <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Success Stories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Companies</a></li>
-                </ul>
-                <form class="form-inline mr-auto" target="_self">
-                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
-                </form><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(0,178,255);margin-right: 5px;">Register</a><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(0,178,255);">Login</a></div>
-        </div>
-    </nav>
-    <div>
-        <h1 data-aos="fade" data-aos-duration="1000"  style="text-align: center;padding-top: 100px;color: rgb(213,213,213);font-family: 'Bungee Inline', cursive;background: #000000;">Welcome to Collabinn</h1>
-    </div>
-    <h1 style="text-align: center;"><img data-aos="zoom-in" data-aos-duration="1050" src="{%static "assets/img/d2d3d8cc-1ad0-45f2-91d9-1b7adbde1ac6_200x200.png"%}" style="background: #ffffff;border-radius: 108px;border-top-left-radius: none;border-bottom-right-radius: none;"></h1>
-    <h1 data-aos="fade" data-aos-duration="950" style="font-size: 32px;text-align: center;">About Us</h1>
-    <p data-aos="fade-up" style="color: rgb(0,0,0);text-align: center;padding-left: 50px;padding-right: 50px;">etwetetsetsetse Lorem Ipsum Dolor sfas fasfas</p>
-    <div class="projects-clean">
+    <div class="features-boxed" style="background: rgb(255,255,255);border-radius: 25px;width: 1149px;margin: 0px;"></div>
+    <div class="features-boxed" style="background: rgb(255,255,255);">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center" data-aos="fade" data-aos-duration="900" style="font-weight: 500;">What we Do&nbsp;</h2>
-                <p class="text-center" data-aos="fade-up">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+                <h2 data-aos="zoom-in" data-aos-duration="1050" class="text-center">What We Offer</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
             </div>
-            <div class="row projects">
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-right" data-aos-duration="900"><img class="img-fluid" src="{%static "assets/img/desk.jpg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
+            <div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-map-marker icon"></i>
+                        <h3 class="name">Works everywhere</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade" data-aos-duration="900"><img class="img-fluid" src="{%static "assets/img/building.jpg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-clock-o icon"></i>
+                        <h3 class="name">Always available</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-left" data-aos-duration="900"><img class="img-fluid" src="{%static "assets/img/loft.jpg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-list-alt icon"></i>
+                        <h3 class="name">Customizable </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-right" data-aos-duration="900"><img class="img-fluid" src="{%static "assets/img/minibus.jpeg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-leaf icon"></i>
+                        <h3 class="name">Organic </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade" data-aos-duration="900"><img class="img-fluid" src="{%static "assets/img/minibus.jpeg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-plane icon"></i>
+                        <h3 class="name">Fast </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" data-aos="fade-left" data-aos-duration="900"><img class="img-fluid" src="{%static "assets/img/minibus.jpeg"%}">
-                    <h3 class="name">Project Name</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-phone icon"></i>
+                        <h3 class="name">Mobile-first</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-dark">
+    <div class="team-boxed" style="background: rgb(0,0,0);color: rgb(255,255,255);">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Team </h2>
+                <p class="text-center" style="color: rgb(255,255,255);">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+            </div>
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box" style="border-radius: 25px;"><img class="rounded-circle" src="assets/img/1.jpg">
+                        <h3 class="name">Ben Johnson</h3>
+                        <p class="title">Musician</p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box" style="border-radius: 25px;"><img class="rounded-circle" src="assets/img/2.jpg">
+                        <h3 class="name">Emily Clark</h3>
+                        <p class="title">Artist</p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box" style="border-radius: 25px;"><img class="rounded-circle" src="assets/img/3.jpg">
+                        <h3 class="name">Carl Kent</h3>
+                        <p class="title">Stylist</p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card"></div>
+    <div class="footer-dark" style="color: rgb(255,255,255);background: rgb(0,0,0);border-color: rgb(0,0,0);">
         <footer>
             <div class="container">
                 <div class="row">
@@ -204,11 +153,11 @@
             </div>
         </footer>
     </div>
-    <div></div>
     <script src="{%static "assets/js/jquery.min.js"%}"></script>
     <script src="{%static "assets/bootstrap/js/bootstrap.min.js"%}"></script>
     <script src="{%static "assets/js/bs-init.js"%}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="{%static "assets/js/Particle-JS---Background-Fixed.js"%}"></script>
 </body>
 
 </html>

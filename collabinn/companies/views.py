@@ -43,7 +43,7 @@ def register_view(request):
 @login_required
 def list_companies_view(request):
     context={}
-    companies=Company.objects.all()
+    companies=Company.objects.filter(is_superuser=False)
     context['companies']=companies
     
     return render(request,'companies/companylist.html',context)
@@ -51,8 +51,8 @@ def list_companies_view(request):
     
 @login_required
 def render_profile(request):
-    if request.POST:
-        p_form=ProfileUpdateForm(request.POST)
+    if request.method=='POST':
+        p_form=ProfileUpdateForm(data=request.POST,instance=request.user)
         if p_form.is_valid():
             p_form.save()
             return redirect('profile')
@@ -60,4 +60,11 @@ def render_profile(request):
         p_form=ProfileUpdateForm(instance=request.user)
     context={'p_form':p_form}
     return render(request,'companies/profile.html',context)
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+    
+    
     
