@@ -6,3 +6,5 @@ Pillow==8.0.1
 psycopg2==2.8.6
 pytz==2020.1
 sqlparse==0.4.1
+coverage==5.3
+django-webtest==1.9.7
