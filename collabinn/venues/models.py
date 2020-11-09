@@ -13,3 +13,6 @@ class VenueInfo(models.Model):
 
     def __str__(self):
         return self.name
+
+    def Details(self):
+        return "the location is {}, weather - {}, amenities - {}".format(self.location,self.weather,self.amenities)
