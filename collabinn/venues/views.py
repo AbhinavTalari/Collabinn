@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def venueshome_view(request):
-    return HttpResponse('select hotels here')
+    return render(request,'venues/index.html')
