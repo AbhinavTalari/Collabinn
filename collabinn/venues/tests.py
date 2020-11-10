@@ -1,3 +1,4 @@
+
 from django.test import TestCase
 from .models import VenueInfo
 # Create your tests here.
@@ -18,4 +19,9 @@ class VenueInfoModelTest(TestCase):
 
 class VenuesViewsTest(TestCase):
 
-	pass
+	def test_venues_index(self):
+		response = self.client.get('/venues/')
+		self.assertEqual(response.status_code,200)
+		self.assertContains(response,'Level')
+		self.assertContains(response,'Need Help?')
+	

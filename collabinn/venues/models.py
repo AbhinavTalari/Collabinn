@@ -16,3 +16,7 @@ class VenueInfo(models.Model):
 
     def Details(self):
         return "the location is {}, weather - {}, amenities - {}".format(self.location,self.weather,self.amenities)
+
+
+
+
