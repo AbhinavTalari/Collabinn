@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_webtest',
     'meetings',
+    'flights',
     'companies',
     'crispy_forms',
     'venues',
