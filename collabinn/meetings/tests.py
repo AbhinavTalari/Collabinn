@@ -13,5 +13,20 @@ class MeetingInfoModelTest(TestCase):
 
 class MeetingViewsTest(TestCase):
 
-	pass
+	def test_meethome_view(self):
+		response = self.client.get('/meetings/')
+		self.assertEqual(response.status_code,200)
+		self.assertContains(response,"meeting home shubham")
+		
+
+	def test_request_companies_view(self):
+		response = self.client.get('/meetings/request')
+		self.assertEqual(response.status_code,200)
+		self.assertContains(response,"request to other companies")
+
+
+	def test_choose_view(self):
+		response = self.client.get('/meetings/choose')
+		self.assertEqual(response.status_code,200)
+		self.assertContains(response,"accept-reject companies")
 
