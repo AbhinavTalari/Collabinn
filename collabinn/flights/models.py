@@ -9,4 +9,8 @@ class FlightInfo(models.Model):
     date=models.DateField()
 
 
+    def __str__(self):
+    	return 'flight named-{} from {} start on date-{}'.format(self.flight_name,self.start,self.date)
+
+
 
