@@ -33,7 +33,7 @@
         </div>
     </nav>
     <div class="card"></div>
-    <h1 style="text-align: center;color: rgb(0,0,0);background-color: white;font-size: 25px;padding: 20px;margin-bottom: 30px;">Welcome<strong>&nbsp;Bold</strong>&nbsp;&nbsp;<br>Here are the curated list of companies you'd like to Collab with</h1>
+    <h1 style="text-align: center;color: rgb(0,0,0);background-color: white;font-size: 25px;padding: 20px;margin-bottom: 30px;">Welcome  <strong>{{user.company_name}}</strong>&nbsp;&nbsp;<br>Here are the curated list of companies you'd like to Collab with</h1>
    
    {% for company in companies  %}
     {% if user.company_name != company.company_name   %}
@@ -42,7 +42,12 @@
         <div class="card-body">
             <h4 class="card-title"><strong>{{company.company_name}}</strong> </h4>
             <h6 class="text-muted card-subtitle mb-2">Location: {{company.location}}</h6>
-            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button" style="border-radius: 25px;">Send Request</button></div>
+            <p class="card-text"><strong>Expertise</strong>: {{company.expertise}}</p>
+            <p class="card-text"><strong>Interests</strong>: {{company.interests}}</p>
+            
+            
+            
+            <button class="btn btn-primary" type="button" style="border-radius: 25px;">Send Request</button></div>
     </div>
     {% endif %}
     

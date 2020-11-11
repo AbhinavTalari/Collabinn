@@ -25,5 +25,6 @@ urlpatterns = [
     path('meetings/',include('meetings.urls')),
     path('flights/',include('flights.urls')), 
     path('venues/',include('venues.urls')),
+    path('api/',include('api.urls'))
 ]
 

@@ -30,3 +30,4 @@ class CompanyAdmin(admin.ModelAdmin):
 
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Company_Profile)
+admin.site.register(CollabRequest)
