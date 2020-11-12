@@ -7,6 +7,7 @@ def home_view(request):
     if request.POST:
         form=FlightForm(request.POST)
         if form.is_valid():
+            form.save()
             sk=form.cleaned_data
             print(sk)
             return render(request,'flights/index.html',context)
