@@ -6,7 +6,10 @@ class FlightInfo(models.Model):
     destination=models.CharField(max_length=50)
     no_adults=models.IntegerField()
     no_children=models.IntegerField()
-    date=models.DateField()
+    dep_date=models.DateField()
+    return_date=models.DateField(default='')
+    one_way=models.BooleanField(default='')
+    return_trip=models.BooleanField(default='')
 
 
 

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'companies',
     'crispy_forms',
     'venues',
-    'flights'
+    'flights',
 ]
 
 MIDDLEWARE = [
