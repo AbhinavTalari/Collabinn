@@ -8,8 +8,7 @@ def venueshome_view(request):
     if request.POST:
         form=DestinationForm(request.POST)
         if form.is_valid():
-            sk=form.cleaned_data
-            print(sk)
+            form.save()
             return render(request,'venues/index.html',context)
         else:  
             context['form']=form  
