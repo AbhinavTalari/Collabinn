@@ -4,6 +4,6 @@ from .models import FlightInfo
 class FlightForm(ModelForm):
     class Meta:
         model=FlightInfo
-        exclude=('flight_name','no_adults','no_children')
+        fields=['start','destination','dep_date','return_date','one_way','return_trip']
         
         
