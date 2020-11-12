@@ -80,8 +80,8 @@ class Company(AbstractBaseUser):
         status=status,
         meeting_date=date,
         meeting_location=location)
-        if symm:
-            person.add_relationship(self, status, False)
+        # if symm:
+        #     person.add_relationship(self, status,date,location, False)
         # person.save()
         # self.save()    
         relationship.save()
@@ -110,10 +110,12 @@ class Company(AbstractBaseUser):
 RELATIONSHIP_REQUESTED = 1
 RELATIONSHIP_BLOCKED = 2
 RELATIONSHIP_ACCEPTED =3
+RELATIONSHIP_SENT=4
 RELATIONSHIP_STATUSES = (
 (RELATIONSHIP_REQUESTED, 'Requested'),
 (RELATIONSHIP_BLOCKED, 'Blocked'),
-(RELATIONSHIP_ACCEPTED,'Accepted')
+(RELATIONSHIP_ACCEPTED,'Accepted'),
+(RELATIONSHIP_SENT,'Sent')
 )  
 
 

@@ -19,13 +19,13 @@
 
 <body>
        <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(0,0,0);color: rgb(255,255,255);height: 60px;">
-        <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="{%url 'home' %}" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a class="nav-link active" href="#" style="color: rgb(255,255,255);">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">Success Stories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">Companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{%url 'companylist' %}" style="color: rgb(255,255,255);">Companies</a></li>
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="background: #ffffff;border-radius: 25px;border-width: 0px;max-width: none;width: 305px;margin-left: 27px;"></div>
@@ -41,7 +41,7 @@
                         {% csrf_token %}
                         <h2 class="text-center"><strong>Create</strong> an account.</h2>
                         <table>{{form.as_table}}</table>
-                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="border-radius: 25px;background: rgb(64,150,244);">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a></form>
+                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="border-radius: 25px;background: rgb(64,150,244);">Sign Up</button></div><a class="already" href="{% url 'login'%}">You already have an account? Login here.</a></form>
                 </div>
             </div>
         </div>

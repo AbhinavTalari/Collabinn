@@ -19,16 +19,14 @@
 
 <body>
        <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(0,0,0);color: rgb(255,255,255);height: 60px;">
-        <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="{%url 'home' %}" style="font-family: 'Bungee Inline', cursive;">Collabinn</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#" style="color: rgb(255,255,255);">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">Success Stories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">Companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'companylist' %}" style="color: rgb(255,255,255);">Companies</a></li>
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
-                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="background: #ffffff;border-radius: 25px;border-width: 0px;max-width: none;width: 305px;margin-left: 27px;"></div>
+                    <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="background: #ffffff;border-radius: 25px;border-width: 0px;max-width: none;width: 306px;"><a class="btn btn-light action-button" role="button" href="{%url 'invites'%}" style="background: rgb(0,178,255); margin-left:20px">Incoming Invites</a><a class="btn btn-light action-button" role="button" href="{%url 'outgoing'%}" style="background: rgb(0,178,255);">Outgoing Invites</a><a class="btn btn-light action-button" role="button" href="{%url 'logout'%}" style="background: rgb(0,178,255);margin-left:20px">Logout</a></div>
                 </form></div>
         </div>
     </nav>

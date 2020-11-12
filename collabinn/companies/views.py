@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from .forms import RegistrationForm,AccountAuthenticationForm,ProfileUpdateForm
-from .models import Company
+from .models import Company,CollabRequest
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
+import datetime
 
 
 def renderhome(request):
@@ -11,6 +12,8 @@ def renderhome(request):
 
 def register_view(request):
     context={}
+    if request.user.is_authenticated:
+        return redirect('companylist')
     if request.POST:
         form=RegistrationForm(request.POST)
         if form.is_valid():
@@ -67,5 +70,33 @@ def logout_view(request):
     logout(request)
     return redirect('home')
     
+@login_required
+def invites_view(request):
+    context={}
+    invites=CollabRequest.objects.filter(to_user=request.user,status=1)
+    context['invites']=invites
+    return render(request,'companies/invites.html',context)
+
+@login_required   
+def invite_accept(request,id):
+    c1= CollabRequest.objects.get(to_user=request.user,id=id)
+    c1.status=3
+    c1.save()
+    return redirect('invites')
+
+def outgoing_invites_view(request):
+    context={}
+    o_invites=CollabRequest.objects.filter(from_user=request.user,status=1)
     
-    
+    context['oinvites']=o_invites
+    return render(request,'companies/outgoing.html',context)
+
+def invite_request(request,id):
+    user=Company.objects.get(company_name=request.user.company_name)
+    to_user=Company.objects.get(id=id)
+    location=user.location
+    date=datetime.date.today()
+    status=1
+    user.add_relationship(to_user,status,date,location)
+    user.save()
+    return redirect('companylist')

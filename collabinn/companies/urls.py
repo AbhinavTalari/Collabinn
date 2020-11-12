@@ -24,5 +24,9 @@ urlpatterns = [
      path('logout',views.logout_view,name='logout'),
      path('register',views.register_view,name='register'),
      path('companylist',views.list_companies_view,name='companylist'),
+     path('accept/<int:id>',views.invite_accept,name='accept'),
+      path('request/<int:id>',views.invite_request,name='request'),
+     path('invites',views.invites_view,name='invites'),
+     path('outgoing',views.outgoing_invites_view,name='outgoing'),
      path('profile',views.render_profile,name='profile')
 ]
