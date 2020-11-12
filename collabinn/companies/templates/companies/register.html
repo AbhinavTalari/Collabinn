@@ -38,6 +38,7 @@
                 <div class="col-md-6"><img src="{%static "assets/img/4380.jpg"%}" style="height: 306px;text-align: left;"></div>
                 <div class="col-md-6">
                     <form method="post">
+                        {% csrf_token %}
                         <h2 class="text-center"><strong>Create</strong> an account.</h2>
                         <table>{{form.as_table}}</table>
                         <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="border-radius: 25px;background: rgb(64,150,244);">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a></form>

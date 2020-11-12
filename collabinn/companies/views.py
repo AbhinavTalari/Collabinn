@@ -52,10 +52,11 @@ def list_companies_view(request):
 @login_required
 def render_profile(request):
     if request.method=='POST':
-        p_form=ProfileUpdateForm(data=request.POST,instance=request.user)
+        p_form=ProfileUpdateForm(request.POST,instance=request.user)
         if p_form.is_valid():
             p_form.save()
-            return redirect('profile')
+            return redirect('companylist')
+
     else:
         p_form=ProfileUpdateForm(instance=request.user)
     context={'p_form':p_form}
