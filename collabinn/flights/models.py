@@ -11,5 +11,8 @@ class FlightInfo(models.Model):
     one_way=models.BooleanField(default='')
     return_trip=models.BooleanField(default='')
 
+    def __str__(self):
+        return self.flight_name
+
 
 
