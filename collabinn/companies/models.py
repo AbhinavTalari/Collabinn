@@ -73,13 +73,15 @@ class Company(AbstractBaseUser):
     
     
         
-    def add_relationship(self, person, status, symm=True):
+    def add_relationship(self, person, status,date,location, symm=True):
         relationship, created = CollabRequest.objects.get_or_create(
         from_user=self,
         to_user=person,
-        status=status)
-        if symm:
-            person.add_relationship(self, status, False)
+        status=status,
+        meeting_date=date,
+        meeting_location=location)
+        # if symm:
+        #     person.add_relationship(self, status,date,location, False)
         # person.save()
         # self.save()    
         relationship.save()
@@ -108,10 +110,12 @@ class Company(AbstractBaseUser):
 RELATIONSHIP_REQUESTED = 1
 RELATIONSHIP_BLOCKED = 2
 RELATIONSHIP_ACCEPTED =3
+RELATIONSHIP_SENT=4
 RELATIONSHIP_STATUSES = (
 (RELATIONSHIP_REQUESTED, 'Requested'),
 (RELATIONSHIP_BLOCKED, 'Blocked'),
-(RELATIONSHIP_ACCEPTED,'Accepted')
+(RELATIONSHIP_ACCEPTED,'Accepted'),
+(RELATIONSHIP_SENT,'Sent')
 )  
 
 
@@ -121,6 +125,8 @@ class CollabRequest(models.Model):
     from_user=models.ForeignKey(Company,related_name='from_company',on_delete=models.CASCADE)
     timestamp=models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=RELATIONSHIP_STATUSES,null=True)
+    meeting_date=models.DateField(null=True)
+    meeting_location=models.CharField(max_length=50,null=True)
     
     def __str__ (self):
         # return "Collab Request From {},to {}".format(self.to_user.company_name,self.from_user.company_name)

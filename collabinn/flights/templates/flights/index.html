@@ -5,12 +5,22 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <!--
+    
 
 Template 2093 Flight
 
 http://www.tooplate.com/view/2093-flight
 
 -->
+ <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css"%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Inline">
+    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css"%}">
+    <link rel="stylesheet" href="{% static "assets/fonts/ionicons.min.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Footer-Dark.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Navigation-with-Search.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Projects-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/Registration-Form-with-Photo.css"%}">
+    <link rel="stylesheet" href="{% static "assets/css/styles.css"%}">
     	<title>Flight - Travel and Tour</title>
     
         <meta name="description" content="">
@@ -50,7 +60,7 @@ http://www.tooplate.com/view/2093-flight
                             </ul>
                         </div>
                         <div class="page-direction-button">
-                            <a href="flights/contact.html"><i class="fa fa-phone"></i>Contact Us Now</a>
+                            <a href="{% url 'flight_contact' %}"><i class="fa fa-phone"></i>Contact Us Now</a>
                         </div>
                     </div>
                 </div>
@@ -59,73 +69,35 @@ http://www.tooplate.com/view/2093-flight
                         <div id="tab1">
                             <div class="submit-form">
                                 <h4>Check availability for <em>direction</em>:</h4>
-                                <form id="form-submit" action="" method="get">
+                                {{ form.errors }}
+                                <form  action="" method="POST">
+                                {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <label for="from">From:</label>
-                                                <select required name='from' onchange='this.form.()'>
-                                                    <option value="">Select a location...</option>
-                                                    <option value="Cambodia">Cambodia</option>
-                                                    <option value="Hong Kong">Hong Kong</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Japan">Japan</option>
-                                                    <option value="Korea">Korea</option>
-                                                    <option value="Laos">Laos</option>
-                                                    <option value="Myanmar">Myanmar</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                    <option value="Thailand">Thailand</option>
-                                                    <option value="Vietnam">Vietnam</option>
-                                                </select>
+                                                <label for="start">From:</label>
+                                                <input name="start" type="text" class="form-control date" id="start" placeholder="Enter starting point..." required onchange='this.form.()'>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <label for="to">To:</label>
-                                                <select required name='to' onchange='this.form.()'>
-                                                    <option value="">Select a location...</option>
-                                                    <option value="Cambodia">Cambodia</option>
-                                                    <option value="Hong Kong">Hong Kong</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Japan">Japan</option>
-                                                    <option value="Korea">Korea</option>
-                                                    <option value="Laos">Laos</option>
-                                                    <option value="Myanmar">Myanmar</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                    <option value="Thailand">Thailand</option>
-                                                    <option value="Vietnam">Vietnam</option>
-                                                </select>
+                                                <label for="destination">To:</label>
+                                                <input name="destination" type="text" class="form-control date" id="destination" placeholder="Enter destination..." required onchange='this.form.()'>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <label for="departure">Departure date:</label>
-                                                <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="Select date..." required onchange='this.form.()'>
+                                                <label for="dep_date">Departure date:</label>
+                                                <input name="dep_date" type="text" class="form-control date" id="dep_date" placeholder="Select date..." required onchange='this.form.()'>
                                             </fieldset>
                                         </div>
+                    
+
+                                         <input type="text" name="adults" id="adults" placeholder="No of Adults" required autofocus> 
+                                        
                                         <div class="col-md-6">
                                             <fieldset>
-                                                <label for="return">Return date:</label>
-                                                <input name="return" type="text" class="form-control date" id="return" placeholder="Select date..." required onchange='this.form.()'>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="radio-select">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-sm-6 col-xs-6">
-                                                        <label for="round">Round</label>
-                                                        <input type="radio" name="trip" id="round" value="round" requiredonchange='this.form.()'>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 col-xs-6">
-                                                        <label for="oneway">Oneway</label>
-                                                        <input type="radio" name="trip" id="oneway" value="one-way" requiredonchange='this.form.()'>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <button type="submit" id="form-submit" class="btn">Order Ticket Now</button>
+                                                <button type="submit" id="form-submit" class="btn btn-success">Order Ticket Now</button>
                                             </fieldset>
                                         </div>
                                     </div>
@@ -137,8 +109,21 @@ http://www.tooplate.com/view/2093-flight
             </div>
         </div>
     </section>
-
-
+  
+    {% for x in prediction  %}
+    {% for y in x.itineraries  %}
+    {% for z in y.segments  %}
+    <div class="card" style="border-radius: 25px;width:1200px;margin:20px">
+    <div class="card-body">
+    <h4 class="card-title"><strong>Departure from {{z.departure.iataCode}} {{z.departure.terminal}} at {{z.departure.at}}</br> Arrival  at :  {{z.arrival.iataCode}} {{z.arrival.terminal}} at {{z.arrival.at}}</strong> </h4>
+    <h4 class="card-title"><strong> Total Duration {{y.duration}}</h4>
+    <h4 class="card-title"><strong> Terminal  {{z.departure.terminal}}</h4>
+    </div>
+    </div>
+        
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
 
     <div class="tabs-content" id="weather">
         <div class="container">
