@@ -33,21 +33,54 @@
                <a class="btn btn-light action-button" role="button" href="{% url 'profile' %}" style="background: rgb(0,178,255);">Profile</a> <a class="btn btn-light action-button" role="button" href="{% url 'logout' %}" style="background: rgb(0,178,255);">Logout</a></div>
         </div>
     </nav>
-    <div class="card"></div>
-    <h1 style="text-align: center;color: rgb(0,0,0);background-color: white;font-size: 25px;padding: 20px;margin-bottom: 30px;">Welcome  <strong>{{user.company_name}}</strong>&nbsp;&nbsp;<br>Here are the curated list of companies you sent Collab Request to</h1>
-   
-   {% for invite in oinvites  %}
-   
-    <div class="card" style="border-radius: 25px;width: 1250px;margin: 0px;margin-right: 20px;margin-left: 20px;">
+
+
+    <div class="card" style="border-radius: 25px;width: 1250px;margin: 0px;margin-right: 20px;margin-left: 20px;text-align:center">
         <div class="card-body">
-            <h4 class="card-title"><strong>To : {{invite.to_user.company_name}}</strong> </h4>
-            <p class="card-text"><strong>Common Interests </strong>: {{invite.from_user.interests}}</p>
-            <p class="card-text"><strong>Status</strong>: {{invite.status}}</p>
-           <button class="btn btn-primary" type="button" style="border-radius: 25px;"><a href="">Cancel Request</a></button></div>
-    </div>
-   
+           <form action="" method="POST" id="form_id">
+      {% csrf_token %} 
+      <h2&>Hotel Search </h2> 
+     <p>
+         <input type="text" name="City Code" id="cityCode" 
+            placeholder="City Code" required autofocus> 
+             Look here for <a href="https://www.iata.org/en/publications/directories/code-search/"> City Codes </a>
+      </p>
     
-   {% endfor %}
+     <button class="btn btn-primary" type="submit" style="border-radius: 25px;">Search Hotels</button>
+     {% for hotels in prediction  %}
+
+     <div class="card" style="border-radius: 25px;width:1200px;margin:20px">
+        <div class="card-body">
+            <h4 class="card-title"><strong>{{hotels.hotel.name}}</strong> </h4>
+            <p class="card-text"><strong>Description </strong></p>
+            <p class="card-text">{{hotels.hotel.description.text }}</p>
+            <h4 class="card-title"><strong>Rating {{hotels.hotel.rating}} ★ </strong></h4>
+            <p class="card-text"><strong>Address </strong></p>
+            <p class="card-text">City : {{hotels.hotel.address.cityName}},{{hotels.hotel.address.lines}} {{hotels.hotel.address.postalCode}}</p>
+            <h4 class="card-title"><strong>Amenities</strong></h4>
+            {% for amenity in hotels.hotel.amenities  %}
+             <button class="btn btn-secondary" type="button" style="border-radius: 25px;font-size:15px;margin-top:5px">{{amenity}}</button>
+            {% endfor %}
+
+            
+           <button class="btn btn-primary" type="button" style="border-radius: 25px;">Book Hotels</button></div>
+    </div>
+     
+     {% endfor %}
+    
+   </form> 
+
+   
+           
+    </div>
+
+   
+
+
+        
+
+
+
     
     <script src="{%static "assets/js/jquery.min.js"%}"></script>
     <script src="{%static "assets/bootstrap/js/bootstrap.min.js"%}"></script>

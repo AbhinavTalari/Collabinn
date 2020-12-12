@@ -28,5 +28,7 @@ urlpatterns = [
       path('request/<int:id>',views.invite_request,name='request'),
      path('invites',views.invites_view,name='invites'),
      path('outgoing',views.outgoing_invites_view,name='outgoing'),
-     path('profile',views.render_profile,name='profile')
+     path('profile',views.render_profile,name='profile'),
+     path('meetings',views.meetings,name='meetings'),
+     path('bookhotels',views.bookhotels,name='hotels')
 ]

@@ -6,6 +6,27 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 import datetime
 
+from amadeus import Client, ResponseError 
+from django.contrib import messages 
+from django.shortcuts import render 
+amadeus = Client(client_id='pnGpZA5SGjPfciAwncPmVWFryuEVGeb1', 
+                 client_secret='Wneu30CGlAKfeZBQ', 
+                 log_level='debug')
+
+
+    
+def bookhotels(request):
+    kwargs = {'cityCode': request.POST.get('City Code')} 
+    
+    try: 
+        purpose = amadeus.shopping.hotel_offers.get(**kwargs).data
+        print(type(purpose))
+    except ResponseError as error: 
+        print(error) 
+        messages.add_message(request, messages.ERROR, error) 
+        return render(request, 'companies/bookhotels.html', {}) 
+    return render(request, 'companies/bookhotels.html', {'prediction': purpose}) 
+
 
 def renderhome(request):
     return render(request,'companies/home.html')
@@ -100,3 +121,11 @@ def invite_request(request,id):
     user.add_relationship(to_user,status,date,location)
     user.save()
     return redirect('companylist')
+
+
+def meetings(request):
+    context={}
+    upcoming=CollabRequest.objects.filter(from_user=request.user,status=3)
+   
+    context['meetings']=upcoming
+    return render(request,'companies/meetings.html',context)
