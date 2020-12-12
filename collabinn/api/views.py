@@ -15,6 +15,9 @@ def meeting_data_list_view(request):
 def meeting_data_list_view_get(request):
     try:
         data = CollabRequest.objects.all()
+        if request.GET.get('meeting_location'):
+            data=CollabRequest.objects.filter(meeting_location=request.GET.get('meeting_location'))
+        
         serializer = CollabRequestDataSerializer(data,many=True)
         return Response(data=serializer.data)
     except CollabRequest.NotFound:

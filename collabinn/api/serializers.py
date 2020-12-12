@@ -17,7 +17,7 @@ class CollabRequestDataSerializer(serializers.Serializer):
         instance.from_user = validated_data.get('from_user',instance.from_user.company_name)
         instance.status = validated_data.get('status',instance.status)
         instance.meeting_date = validated_data.get('meeting_date',instance.meeting_data)
-        instance.meeting_location = validated_data.get('people_met',instance.people_met)
+        instance.meeting_location = validated_data.get('meeting_location',instance.meeting_location)
 
         instance.save()
         return instance
