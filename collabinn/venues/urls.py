@@ -5,4 +5,5 @@ from venues import views
 
 urlpatterns = [
     path("",views.venueshome_view,name='venues_home'),
+    path("data",views.DisplayData,name='DisplayData'),
 ]
